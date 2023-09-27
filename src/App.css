@@ -1,0 +1,126 @@
+.HomePageWrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  height: 100vh;
+}
+.logo{
+  width: 150px;
+  height: 150px;
+  margin: -40px 0px;
+}
+footer{
+  position: fixed;
+  bottom: 0;
+}
+footer a{
+  color: #4aee88;
+  text-decoration: none;
+  border-bottom: 1px solid #4aee88;
+  transition: all 0.3s ease-in-out;
+}
+.FormPageWrapper{
+  background-color: #282a36;
+  width: 400px;
+  max-width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.inputgrp{
+  display: flex;
+  width: 92%;
+  flex-direction: column;
+}
+.inputgrp h4{
+  margin: 16px 0px;
+}
+.inputBox{
+  font-size: medium;
+  font-weight: 600;
+  outline: none;
+  padding: 10px;
+  border: none;
+  margin: 5px 0px;
+  border-radius: 3px;
+}
+.btn{
+  padding: 7px;
+  border: none;
+  margin: 5px 0px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-size: larger;
+  font-weight: 500;
+  border-radius: 2px;
+}
+.joinBtn,.leavebtn{
+  background-color: #4aee88;
+}
+.joinBtn:hover,.leavebtn:hover{
+  background-color: #048b38;
+}
+.createInfo{
+  text-align: center;
+  margin: 10px 0px;
+}
+.createNewBtn{
+  color: #4aee88;
+  text-decoration: none;
+  border-bottom: 1px solid #4aee88;
+  transition: all 0.3s ease-in-out;
+}
+.createNewBtn:hover, footer a:hover{
+  color: #048b38;
+  border-color: #048b38;
+}
+.mainWrap{
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  height: 100vh;
+}
+.aside{
+  background: #1c1e29;
+  padding: 16px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+.asideInner{
+  flex: 1;
+}
+.editorWrap{
+  height: 100vh;
+}
+.logos{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #424242;
+  padding-bottom: 4px;
+}
+.logoimg{
+  margin: -52px;
+  width: 150px;
+  height: 150px;
+}
+.clientList{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+}
+.client{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.userName{
+  margin-top: 3px;
+}
+.CodeMirror{
+  min-height: 100vh;
+  line-height: 1.2;
+  font-size: 18px;
+}
