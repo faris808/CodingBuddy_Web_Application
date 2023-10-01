@@ -7,7 +7,7 @@ const HomePage = () => {
   const [username,setusername]=useState("");
   const navigate=useNavigate();
   const createNewRoom=(e)=>{
-    e.preventDefault();
+    e.preventDefault();  //It basically prevents the the reloading of the page
     const id=uuidv4();
     setroomid(id);
     toast.success('Created a new room');
@@ -19,7 +19,7 @@ const HomePage = () => {
     }
     navigate(`/editor/${roomid}`,{
         state:{
-            username,
+            username,   //Here we are passing username as props to the Editor Page so that we can access username in the Editor Page
         }
     })
   }

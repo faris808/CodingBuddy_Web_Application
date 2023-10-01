@@ -23,13 +23,21 @@ io.on('connection',(socket)=>{
         socket.join(roomid);
         const clients=getAllConnectedClients(roomid);
         console.log(clients);
-        clients.forEach(({socketid})=>{
+        clients.forEach(({socketid})=>{                //To show all the other connected clients that the new user has joined
             io.to(socketid).emit(ACTIONS.JOINED,{
                 clients,
                 username,
                 socketid:socket.id,
             });
         })
+    })
+
+    socket.on(ACTIONS.CODE_CHANGE,({roomid,code})=>{
+        socket.in(roomid).emit(ACTIONS.CODE_CHANGE,{code});
+    })
+
+    socket.on(ACTIONS.SYNC_CODE,({socketid,code})=>{
+        io.to(socketid).emit(ACTIONS.CODE_CHANGE,{code});
     })
 
     socket.on('disconnecting',()=>{

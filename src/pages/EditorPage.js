@@ -7,6 +7,7 @@ import { useLocation, useNavigate,Navigate, useParams } from "react-router-dom";
 import { toast } from "react-hot-toast";
 const EditorPage = () => {
   const socketRef=useRef(null);
+  const codeRef=useRef(null);
   const location=useLocation();
   const reactNavigator=useNavigate();
   const {roomid}=useParams();
@@ -31,6 +32,10 @@ const EditorPage = () => {
           console.log(`${username} joined`);
         }
         setclients(clients);
+        socketRef.current.emit(ACTIONS.SYNC_CODE,{
+          code:codeRef.current,
+          socketid
+        });
        })
 
        //Listening for disconnected
@@ -42,13 +47,27 @@ const EditorPage = () => {
        })
     }
     init();
-    return ()=>{
-      socketRef.current.disconnect();
-      socketRef.current.off(ACTIONS.JOINED);
-      socketRef.current.off(ACTIONS.DISCONNECTED);
+    return ()=>{   //Listeners are required to be cleared, otherwise memory leak problem can occur
+      socketRef.current.disconnect();         //Clear function
+      socketRef.current.off(ACTIONS.JOINED);  //Clear function
+      socketRef.current.off(ACTIONS.DISCONNECTED);  //Clear function
     }
   },[]);
   const [clients, setclients] = useState([]);
+
+  async function copyRoomId(){
+    try{
+      await navigator.clipboard.writeText(roomid);
+      toast.success('ROOM ID has been copied to your clipboard');
+    }
+    catch(err){
+      toast.error('Could not copy the ROOM ID');
+    }
+  }
+
+  function leaveRoom(){
+    reactNavigator('/');
+  }
   if(!location.state){
     return <Navigate to="/" />;
   }
@@ -66,11 +85,13 @@ const EditorPage = () => {
             ))}
           </div>
         </div>
-        <button className="btn copybtn">Copy Room ID</button>
-        <button className="btn leavebtn">Leave</button>
+        <button className="btn copybtn" onClick={copyRoomId}>Copy Room ID</button>
+        <button className="btn leavebtn" onClick={leaveRoom}>Leave</button>
       </div>
       <div className="editorWrap">
-        <Editor />
+        <Editor socketRef={socketRef} roomid={roomid} onCodeChange={(code)=>{
+          codeRef.current=code;
+        }}/>
       </div>
     </div>
   );

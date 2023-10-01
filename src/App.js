@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <div>
-        <Toaster position="top-right" 
+        <Toaster position="top-right"  //Here we had defined the Toaster container globally in the app.js, so      that it can work anywhere inside our project 
         toastOptions={{
           success:{
             theme:{
@@ -19,7 +19,7 @@ function App() {
       <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage />}></Route>
-            <Route path="/editor/:roomId" element={<EditorPage />}></Route>
+            <Route path="/editor/:roomid" element={<EditorPage />}></Route>
           </Routes>
       </BrowserRouter>
     </>
