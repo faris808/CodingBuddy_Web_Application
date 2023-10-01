@@ -3,8 +3,14 @@ const socketio=require('socket.io');
 const app=express();
 const http=require('http');
 const ACTIONS = require('./src/Actions');
+const path = require('path');
 const server=http.createServer(app);
 const io=socketio(server);
+
+app.use(express.static('build'));
+app.use((req,res,next)=>{    //If any request come to server, then we basically serve index.html file 
+    res.sendFile(path.join(__dirname,'build','index.html'));
+})
 const userSocketMap={};
 function getAllConnectedClients(roomid){
     //map
