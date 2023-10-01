@@ -7,6 +7,12 @@ const path = require('path');
 const server=http.createServer(app);
 const io=socketio(server);
 
+
+app.use(express.static('build'));
+app.use((req, res, next) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 const userSocketMap={};
 function getAllConnectedClients(roomid){
     //map
