@@ -1,3 +1,4 @@
+const dotenv=require('dotenv');
 const express=require('express');
 const socketio=require('socket.io');
 const app=express();
@@ -6,8 +7,7 @@ const ACTIONS = require('./src/Actions');
 const path = require('path');
 const server=http.createServer(app);
 const io=socketio(server);
-
-
+dotenv.config();
 app.use(express.static('build'));
 app.use((req, res, next) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
