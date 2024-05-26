@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {v4 as uuidv4} from 'uuid';
-import { toast } from "react-hot-toast";
+import { Toast, toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 const HomePage = () => {
   const [roomid,setroomid]=useState("");
@@ -43,7 +43,7 @@ const HomePage = () => {
           <button className="btn joinBtn" onClick={joinRoom}>Join</button>
           <span className="createInfo">
             If You Don't Have Invite then create &nbsp;
-            <a className="createNewBtn" onClick={createNewRoom}>
+            <a href="" className="createNewBtn" onClick={createNewRoom}>
               New Room
             </a>
           </span>
@@ -51,7 +51,7 @@ const HomePage = () => {
       </div>
       <footer>
         <h4>
-          Built with 💛 <a>CodingBuddy</a>
+          Built with 💛 <a href="">CodingBuddy</a>
         </h4>
       </footer>
     </div>
