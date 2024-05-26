@@ -52,7 +52,7 @@ const EditorPage = () => {
       socketRef.current.off(ACTIONS.JOINED);  //Clear function
       socketRef.current.off(ACTIONS.DISCONNECTED);  //Clear function
     }
-  },[]);
+  },[location.state?.username, reactNavigator, roomid]);
   const [clients, setclients] = useState([]);
 
   async function copyRoomId(){
