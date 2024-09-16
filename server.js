@@ -23,7 +23,7 @@ function getAllConnectedClients(roomid){
         };
     });
 }
-const port=process.env.port || 5000;
+const port=process.env.PORT || 3000;
 io.on('connection',(socket)=>{
     console.log("socket connected",socket.id);
     socket.on(ACTIONS.JOIN,({roomid,username})=>{
