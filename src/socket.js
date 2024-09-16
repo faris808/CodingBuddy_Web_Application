@@ -6,5 +6,5 @@ export const initSocket=async()=>{  //ye function basically client ka ek instanc
         timeout:10000,
         transports:['websocket'],
     };
-    return io(process.env.REACT_APP_BACKEND_URL,options);   //It will return the instance of socket client
+    return io("https://codingbuddy-web-application.onrender.com",options);   //It will return the instance of socket client
 };
